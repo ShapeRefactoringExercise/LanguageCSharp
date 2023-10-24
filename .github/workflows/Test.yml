@@ -19,5 +19,8 @@ jobs:
       uses: actions/checkout@v4
     - name: Print DotNet Version
       run: dotnet --version
+    - name: Run 'arch' on macOS
+      if: runner.os == 'macOS'
+      run: arch      
     - name: build and test
       run: dotnet test
