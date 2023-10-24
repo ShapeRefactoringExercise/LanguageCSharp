@@ -263,536 +263,662 @@ internal class Utils
             }
             else
             {
-                gs = gs(2);
-                if (roster.Count == gs(MathHelper.no) && (dC == gs(MathHelper.no) - 1 && ((Func<bool>) (() =>
-                    {
-                        if (roster[^1] == MathHelper.no && roster[0] == MathHelper.no) return true;
-                        if (MathHelper.no == roster[0] || roster[^1] == MathHelper.no) return false;
-                        if ((IDictionary<string, dynamic>) roster[^1] != MathHelper.no &&
-                            ((ICollection<KeyValuePair<string, dynamic>>) roster[0]).Count !=
-                            ((IDictionary<string, dynamic>) roster[^1]).Count) return false;
-                        foreach (var (k, pv) in (ICollection<KeyValuePair<string, dynamic>>) roster[0])
-                        {
-                            var o1 = MathHelper.no;
-                            if ((IDictionary<string, dynamic>) roster[^1] != MathHelper.no &&
-                                !((IDictionary<string, dynamic>) roster[^1]).TryGetValue(k, out o1)) return false;
-                            if (!Equals(o1, pv)) return false;
-                        }
+                Applesauce(roster, gs, dC, tack, deg);
+            }
+        }
 
-                        return true;
-                    }))()))
+        return tack;
+    }
+
+    private static void Applesauce(IReadOnlyList<dynamic> roster, dynamic gs, int? dC, dynamic tack, List<dynamic> deg)
+    {
+        gs = gs(2);
+        if (roster.Count == gs(MathHelper.no) && (dC == gs(MathHelper.no) - 1 && ((Func<bool>) (() =>
+            {
+                if (roster[^1] == MathHelper.no && roster[0] == MathHelper.no) return true;
+                if (MathHelper.no == roster[0] || roster[^1] == MathHelper.no) return false;
+                if ((IDictionary<string, dynamic>) roster[^1] != MathHelper.no &&
+                    ((ICollection<KeyValuePair<string, dynamic>>) roster[0]).Count !=
+                    ((IDictionary<string, dynamic>) roster[^1]).Count) return false;
+                foreach (var (k, pv) in (ICollection<KeyValuePair<string, dynamic>>) roster[0])
                 {
-                    dynamic angleA = new ExpandoObject();
-                    dynamic a = new ExpandoObject();
-                    dynamic b = new ExpandoObject();
-                    tack.AngleB = new ExpandoObject();
-                    dynamic B = new ExpandoObject();
-                    dynamic c = new ExpandoObject();
-                    dynamic Bb = new ExpandoObject();
-                    dynamic g = new ExpandoObject();
-                    dynamic angleB = new ExpandoObject();
-                    tack.AngleB.SideA = new ExpandoObject();
-                    dynamic i = new ExpandoObject();
-                    angleB.SideB = new ExpandoObject();
-                    angleB.SideA = new ExpandoObject();
-                    dynamic Ca = new ExpandoObject();
-                    dynamic Bc = new ExpandoObject();
-                    dynamic C = new ExpandoObject();
-                    tack.SideB = new ExpandoObject();
-                    dynamic d = new ExpandoObject();
-                    dynamic h = new ExpandoObject();
-                    dynamic A = new ExpandoObject();
-                    dynamic j = new ExpandoObject();
-                    dynamic e = new ExpandoObject();
-                    dynamic angleC = new ExpandoObject();
-                    dynamic f = new ExpandoObject();
-                    tack.SideA = new ExpandoObject();
-                    tack.AngleC = new ExpandoObject();
-                    dynamic Ac = new ExpandoObject();
-                    dynamic Cc = new ExpandoObject();
-                    tack.SideC = new ExpandoObject();
-                    tack.AngleC.SideB = new ExpandoObject();
-                    dynamic Aa = new ExpandoObject();
-                    dynamic Ab = new ExpandoObject();
-                    dynamic Cb = new ExpandoObject();
-                    dynamic Ba = new ExpandoObject();
-                    tack.AngleC.SideA = Ac;
-                    tack.AngleB.SideB = Ba;
-                    tack.AngleC.SideA.Type = "Line Segment";
-                    tack.SideB.Length = Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) +
-                                                  Math.Pow(roster[1].Y - roster[2].Y, 2));
-                    Bb.Type = "Line Segment";
-                    Ab.Slope = Math.Abs((double) roster[0].X - roster[2].X) <= 0.0001
-                        ? ((Func<dynamic>) (() =>
-                        {
-                            c.IsSome = false;
-                            return c;
-                        }))()
-                        : ((Func<double, dynamic>) (v6 =>
-                        {
-                            c.IsSome = true;
-                            c.Value = v6;
-                            return c;
-                        }))(((double) roster[0].Y - roster[2].Y) / ((double) roster[0].X - roster[2].X));
-                    Ac.Slope = Math.Abs((double) roster[1].X - roster[2].X) <= 0.0001
-                        ? ((Func<dynamic>) (() =>
-                        {
-                            e.IsSome = false;
-                            return e;
-                        }))()
-                        : ((Func<double, dynamic>) (v9 =>
-                        {
-                            e.IsSome = true;
-                            e.Value = v9;
-                            return e;
-                        }))(((double) roster[1].Y - roster[2].Y) / ((double) roster[1].X - roster[2].X));
-                    angleB.SideB.Slope = ((Func<dynamic>) (() =>
+                    var o1 = MathHelper.no;
+                    if ((IDictionary<string, dynamic>) roster[^1] != MathHelper.no &&
+                        !((IDictionary<string, dynamic>) roster[^1]).TryGetValue(k, out o1)) return false;
+                    if (!Equals(o1, pv)) return false;
+                }
+
+                return true;
+            }))()))
+        {
+            dynamic angleA = new ExpandoObject();
+            dynamic a = new ExpandoObject();
+            dynamic b = new ExpandoObject();
+            tack.AngleB = new ExpandoObject();
+            dynamic B = new ExpandoObject();
+            dynamic c = new ExpandoObject();
+            dynamic Bb = new ExpandoObject();
+            dynamic g = new ExpandoObject();
+            dynamic angleB = new ExpandoObject();
+            tack.AngleB.SideA = new ExpandoObject();
+            dynamic i = new ExpandoObject();
+            angleB.SideB = new ExpandoObject();
+            angleB.SideA = new ExpandoObject();
+            dynamic Ca = new ExpandoObject();
+            dynamic Bc = new ExpandoObject();
+            dynamic C = new ExpandoObject();
+            tack.SideB = new ExpandoObject();
+            dynamic d = new ExpandoObject();
+            dynamic h = new ExpandoObject();
+            dynamic A = new ExpandoObject();
+            dynamic j = new ExpandoObject();
+            dynamic e = new ExpandoObject();
+            dynamic angleC = new ExpandoObject();
+            dynamic f = new ExpandoObject();
+            tack.SideA = new ExpandoObject();
+            tack.AngleC = new ExpandoObject();
+            dynamic Ac = new ExpandoObject();
+            dynamic Cc = new ExpandoObject();
+            tack.SideC = new ExpandoObject();
+            tack.AngleC.SideB = new ExpandoObject();
+            dynamic Aa = new ExpandoObject();
+            dynamic Ab = new ExpandoObject();
+            dynamic Cb = new ExpandoObject();
+            dynamic Ba = new ExpandoObject();
+            tack.AngleC.SideA = Ac;
+            tack.AngleB.SideB = Ba;
+            tack.AngleC.SideA.Type = "Line Segment";
+            tack.SideB.Length = Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) +
+                                          Math.Pow(roster[1].Y - roster[2].Y, 2));
+            Bb.Type = "Line Segment";
+            Ab.Slope = Math.Abs((double) roster[0].X - roster[2].X) <= 0.0001
+                ? ((Func<dynamic>) (() =>
+                {
+                    c.IsSome = false;
+                    return c;
+                }))()
+                : ((Func<double, dynamic>) (v6 =>
+                {
+                    c.IsSome = true;
+                    c.Value = v6;
+                    return c;
+                }))(((double) roster[0].Y - roster[2].Y) / ((double) roster[0].X - roster[2].X));
+            Ac.Slope = Math.Abs((double) roster[1].X - roster[2].X) <= 0.0001
+                ? ((Func<dynamic>) (() =>
+                {
+                    e.IsSome = false;
+                    return e;
+                }))()
+                : ((Func<double, dynamic>) (v9 =>
+                {
+                    e.IsSome = true;
+                    e.Value = v9;
+                    return e;
+                }))(((double) roster[1].Y - roster[2].Y) / ((double) roster[1].X - roster[2].X));
+            angleB.SideB.Slope = ((Func<dynamic>) (() =>
+            {
+                dynamic da = new ExpandoObject();
+                return Math.Abs((double) roster[2].X - roster[0].X) <= 0.0001
+                    ? ((Func<dynamic>) (() =>
                     {
-                        dynamic da = new ExpandoObject();
-                        return Math.Abs((double) roster[2].X - roster[0].X) <= 0.0001
-                            ? ((Func<dynamic>) (() =>
-                            {
-                                da.IsSome = false;
-                                return da;
-                            }))()
-                            : ((Func<double, dynamic>) (v4 =>
-                            {
-                                da.IsSome = true;
-                                da.Value = v4;
-                                return da;
-                            }))(((double) roster[2].Y - roster[0].Y) / ((double) roster[2].X - roster[0].X));
-                    }))();
-                    tack.SideA.Slope = Math.Abs((double) roster[1].X - roster[0].X) <= 0.0001
-                        ? ((Func<dynamic>) (() =>
-                        {
-                            a.IsSome = false;
-                            return a;
-                        }))()
-                        : ((Func<double, dynamic>) (v =>
-                        {
-                            a.IsSome = true;
-                            a.Value = v;
-                            return a;
-                        }))(((double) roster[1].Y - roster[0].Y) / ((double) roster[1].X - roster[0].X));
-                    angleB.P2 = roster[0];
-                    tack.AngleB.SideA.Type = "Line Segment";
-                    B.Type = "Line Segment";
-                    tack.AngleB.SideB.Type = "Line Segment";
-                    tack.AngleA = angleB;
-                    Bb.P1 = roster[0];
-                    tack.AngleB.Degrees = Math.Acos(
-                        (Math.Pow(
-                             Math.Sqrt(Math.Pow(roster[2].X - roster[0].X, 2) + Math.Pow(roster[2].Y - roster[0].Y, 2)),
-                             2) +
-                         Math.Pow(
-                             Math.Sqrt(Math.Pow(roster[1].X - roster[0].X, 2) + Math.Pow(roster[1].Y - roster[0].Y, 2)),
-                             2) -
-                         Math.Pow(
-                             Math.Sqrt(Math.Pow(roster[2].X - roster[1].X, 2) + Math.Pow(roster[2].Y - roster[1].Y, 2)),
-                             2)) / (2 *
-                                    Math.Sqrt(Math.Pow(roster[2].X - roster[0].X, 2) +
-                                              Math.Pow(roster[2].Y - roster[0].Y, 2)) *
-                                    Math.Sqrt(Math.Pow(roster[1].X - roster[0].X, 2) +
-                                              Math.Pow(roster[1].Y - roster[0].Y, 2)))) * (180 / Math.PI);
-                    Ca.P1 = roster[0];
-                    tack.P3 = roster[2];
-                    tack.AngleC.Vertex = roster[1];
-                    Ca.P2 = roster[2];
-                    Bb.Length = Math.Sqrt(Math.Pow(roster[0].X - roster[2].X, 2) +
-                                          Math.Pow(roster[0].Y - roster[2].Y, 2));
-                    tack.Perimeter =
-                        Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) + Math.Pow(roster[0].Y - roster[1].Y, 2)) +
-                        Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) + Math.Pow(roster[1].Y - roster[2].Y, 2)) +
-                        Math.Sqrt(Math.Pow(roster[2].X - roster[0].X, 2) + Math.Pow(roster[2].Y - roster[0].Y, 2));
-                    tack.SideA.Type = "Line Segment";
-                    tack.AngleB.SideA.Length = Math.Sqrt(Math.Pow(roster[2].X - roster[0].X, 2) +
-                                                         Math.Pow(roster[2].Y - roster[0].Y, 2));
-                    Ca.Slope = Math.Abs((double) roster[2].X - roster[0].X) <= 0.0001
-                        ? ((Func<dynamic>) (() =>
-                        {
-                            d.IsSome = false;
-                            return d;
-                        }))()
-                        : ((Func<double, dynamic>) (v11 =>
-                        {
-                            d.IsSome = true;
-                            d.Value = v11;
-                            return d;
-                        }))(((double) roster[2].Y - roster[0].Y) / ((double) roster[2].X - roster[0].X));
-                    tack.AngleC.SideB.Slope = Math.Abs((double) roster[1].X - roster[2].X) <= 0.0001
-                        ? ((Func<dynamic>) (() =>
-                        {
-                            g.IsSome = false;
-                            return g;
-                        }))()
-                        : ((Func<double, dynamic>) (v10 =>
-                        {
-                            g.IsSome = true;
-                            g.Value = v10;
-                            return g;
-                        }))(((double) roster[1].Y - roster[2].Y) / ((double) roster[1].X - roster[2].X));
-                    Ac.P1 = roster[0];
-                    angleB.SideB.P2 = roster[2];
-                    angleB.SideA.Slope = ((Func<dynamic>) (() =>
+                        da.IsSome = false;
+                        return da;
+                    }))()
+                    : ((Func<double, dynamic>) (v4 =>
                     {
-                        dynamic dd = new ExpandoObject();
-                        return Math.Abs((double) roster[2].X - roster[1].X) <= 0.0001
-                            ? ((Func<dynamic>) (() =>
-                            {
-                                dd.IsSome = false;
-                                return dd;
-                            }))()
-                            : ((Func<double, dynamic>) (v3 =>
-                            {
-                                dd.IsSome = true;
-                                dd.Value = v3;
-                                return dd;
-                            }))(((double) roster[2].Y - roster[1].Y) / ((double) roster[2].X - roster[1].X));
-                    }))();
-                    tack.P1 = roster[0];
-                    Cb.Slope = Math.Abs((double) roster[1].X - roster[2].X) <= 0.0001
-                        ? ((Func<dynamic>) (() =>
-                        {
-                            h.IsSome = false;
-                            return h;
-                        }))()
-                        : ((Func<double, dynamic>) (v8 =>
-                        {
-                            h.IsSome = true;
-                            h.Value = v8;
-                            return h;
-                        }))(((double) roster[1].Y - roster[2].Y) / ((double) roster[1].X - roster[2].X));
-                    tack.AngleC.SideA.Length = Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) +
-                                                         Math.Pow(roster[0].Y - roster[1].Y, 2));
-                    tack.AngleC.SideB.P2 = roster[1];
-                    tack.AngleB.P2 = roster[1];
-                    tack.AngleC.Degrees = Math.Acos(
-                        (Math.Pow(
-                             Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) + Math.Pow(roster[0].Y - roster[1].Y, 2)),
-                             2) +
-                         Math.Pow(
-                             Math.Sqrt(Math.Pow(roster[2].X - roster[1].X, 2) + Math.Pow(roster[2].Y - roster[1].Y, 2)),
-                             2) -
-                         Math.Pow(
-                             Math.Sqrt(Math.Pow(roster[0].X - roster[2].X, 2) + Math.Pow(roster[0].Y - roster[2].Y, 2)),
-                             2)) / (2 *
-                                    Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) +
-                                              Math.Pow(roster[0].Y - roster[1].Y, 2)) *
-                                    Math.Sqrt(Math.Pow(roster[2].X - roster[1].X, 2) +
-                                              Math.Pow(roster[2].Y - roster[1].Y, 2)))) * (180 / Math.PI);
-                    tack.AngleB.SideB.Slope = ((Func<dynamic>) (() =>
+                        da.IsSome = true;
+                        da.Value = v4;
+                        return da;
+                    }))(((double) roster[2].Y - roster[0].Y) / ((double) roster[2].X - roster[0].X));
+            }))();
+            tack.SideA.Slope = Math.Abs((double) roster[1].X - roster[0].X) <= 0.0001
+                ? ((Func<dynamic>) (() =>
+                {
+                    a.IsSome = false;
+                    return a;
+                }))()
+                : ((Func<double, dynamic>) (v =>
+                {
+                    a.IsSome = true;
+                    a.Value = v;
+                    return a;
+                }))(((double) roster[1].Y - roster[0].Y) / ((double) roster[1].X - roster[0].X));
+            angleB.P2 = roster[0];
+            tack.AngleB.SideA.Type = "Line Segment";
+            B.Type = "Line Segment";
+            tack.AngleB.SideB.Type = "Line Segment";
+            tack.AngleA = angleB;
+            Bb.P1 = roster[0];
+            tack.AngleB.Degrees = Math.Acos(
+                (Math.Pow(
+                     Math.Sqrt(Math.Pow(roster[2].X - roster[0].X, 2) + Math.Pow(roster[2].Y - roster[0].Y, 2)),
+                     2) +
+                 Math.Pow(
+                     Math.Sqrt(Math.Pow(roster[1].X - roster[0].X, 2) + Math.Pow(roster[1].Y - roster[0].Y, 2)),
+                     2) -
+                 Math.Pow(
+                     Math.Sqrt(Math.Pow(roster[2].X - roster[1].X, 2) + Math.Pow(roster[2].Y - roster[1].Y, 2)),
+                     2)) / (2 *
+                            Math.Sqrt(Math.Pow(roster[2].X - roster[0].X, 2) +
+                                      Math.Pow(roster[2].Y - roster[0].Y, 2)) *
+                            Math.Sqrt(Math.Pow(roster[1].X - roster[0].X, 2) +
+                                      Math.Pow(roster[1].Y - roster[0].Y, 2)))) * (180 / Math.PI);
+            Ca.P1 = roster[0];
+            tack.P3 = roster[2];
+            tack.AngleC.Vertex = roster[1];
+            Ca.P2 = roster[2];
+            Bb.Length = Math.Sqrt(Math.Pow(roster[0].X - roster[2].X, 2) +
+                                  Math.Pow(roster[0].Y - roster[2].Y, 2));
+            tack.Perimeter =
+                Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) + Math.Pow(roster[0].Y - roster[1].Y, 2)) +
+                Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) + Math.Pow(roster[1].Y - roster[2].Y, 2)) +
+                Math.Sqrt(Math.Pow(roster[2].X - roster[0].X, 2) + Math.Pow(roster[2].Y - roster[0].Y, 2));
+            tack.SideA.Type = "Line Segment";
+            tack.AngleB.SideA.Length = Math.Sqrt(Math.Pow(roster[2].X - roster[0].X, 2) +
+                                                 Math.Pow(roster[2].Y - roster[0].Y, 2));
+            Ca.Slope = Math.Abs((double) roster[2].X - roster[0].X) <= 0.0001
+                ? ((Func<dynamic>) (() =>
+                {
+                    d.IsSome = false;
+                    return d;
+                }))()
+                : ((Func<double, dynamic>) (v11 =>
+                {
+                    d.IsSome = true;
+                    d.Value = v11;
+                    return d;
+                }))(((double) roster[2].Y - roster[0].Y) / ((double) roster[2].X - roster[0].X));
+            tack.AngleC.SideB.Slope = Math.Abs((double) roster[1].X - roster[2].X) <= 0.0001
+                ? ((Func<dynamic>) (() =>
+                {
+                    g.IsSome = false;
+                    return g;
+                }))()
+                : ((Func<double, dynamic>) (v10 =>
+                {
+                    g.IsSome = true;
+                    g.Value = v10;
+                    return g;
+                }))(((double) roster[1].Y - roster[2].Y) / ((double) roster[1].X - roster[2].X));
+            Ac.P1 = roster[0];
+            angleB.SideB.P2 = roster[2];
+            angleB.SideA.Slope = ((Func<dynamic>) (() =>
+            {
+                dynamic dd = new ExpandoObject();
+                return Math.Abs((double) roster[2].X - roster[1].X) <= 0.0001
+                    ? ((Func<dynamic>) (() =>
                     {
-                        dynamic quidich = new ExpandoObject();
-                        return Math.Abs((double) roster[0].X - roster[1].X) <= 0.0001
-                            ? ((Func<dynamic>) (() =>
-                            {
-                                quidich.IsSome = false;
-                                return quidich;
-                            }))()
-                            : ((Func<double, dynamic>) (v7 =>
-                            {
-                                quidich.IsSome = true;
-                                quidich.Value = v7;
-                                return quidich;
-                            }))(((double) roster[0].Y - roster[1].Y) / ((double) roster[0].X - roster[1].X));
-                    }))();
-                    tack.AngleC.SideA.P1 = roster[0];
-                    A.Type = "Line Segment";
+                        dd.IsSome = false;
+                        return dd;
+                    }))()
+                    : ((Func<double, dynamic>) (v3 =>
+                    {
+                        dd.IsSome = true;
+                        dd.Value = v3;
+                        return dd;
+                    }))(((double) roster[2].Y - roster[1].Y) / ((double) roster[2].X - roster[1].X));
+            }))();
+            tack.P1 = roster[0];
+            Cb.Slope = Math.Abs((double) roster[1].X - roster[2].X) <= 0.0001
+                ? ((Func<dynamic>) (() =>
+                {
+                    h.IsSome = false;
+                    return h;
+                }))()
+                : ((Func<double, dynamic>) (v8 =>
+                {
+                    h.IsSome = true;
+                    h.Value = v8;
+                    return h;
+                }))(((double) roster[1].Y - roster[2].Y) / ((double) roster[1].X - roster[2].X));
+            tack.AngleC.SideA.Length = Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) +
+                                                 Math.Pow(roster[0].Y - roster[1].Y, 2));
+            tack.AngleC.SideB.P2 = roster[1];
+            tack.AngleB.P2 = roster[1];
+            tack.AngleC.Degrees = Math.Acos(
+                (Math.Pow(
+                     Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) + Math.Pow(roster[0].Y - roster[1].Y, 2)),
+                     2) +
+                 Math.Pow(
+                     Math.Sqrt(Math.Pow(roster[2].X - roster[1].X, 2) + Math.Pow(roster[2].Y - roster[1].Y, 2)),
+                     2) -
+                 Math.Pow(
+                     Math.Sqrt(Math.Pow(roster[0].X - roster[2].X, 2) + Math.Pow(roster[0].Y - roster[2].Y, 2)),
+                     2)) / (2 *
+                            Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) +
+                                      Math.Pow(roster[0].Y - roster[1].Y, 2)) *
+                            Math.Sqrt(Math.Pow(roster[2].X - roster[1].X, 2) +
+                                      Math.Pow(roster[2].Y - roster[1].Y, 2)))) * (180 / Math.PI);
+            tack.AngleB.SideB.Slope = ((Func<dynamic>) (() =>
+            {
+                dynamic quidich = new ExpandoObject();
+                return Math.Abs((double) roster[0].X - roster[1].X) <= 0.0001
+                    ? ((Func<dynamic>) (() =>
+                    {
+                        quidich.IsSome = false;
+                        return quidich;
+                    }))()
+                    : ((Func<double, dynamic>) (v7 =>
+                    {
+                        quidich.IsSome = true;
+                        quidich.Value = v7;
+                        return quidich;
+                    }))(((double) roster[0].Y - roster[1].Y) / ((double) roster[0].X - roster[1].X));
+            }))();
+            tack.AngleC.SideA.P1 = roster[0];
+            A.Type = "Line Segment";
 // dynamic angleD = new ExpandoObject();
-                    tack.AngleB.SideB.P2 = roster[0];
-                    Ac.P2 = roster[1];
-                    Cc.P2 = roster[0];
-                    Cc.P1 = roster[1];
-                    B.Length = Math.Sqrt(
-                        Math.Pow(roster[1].X - roster[2].X, 2) + Math.Pow(roster[1].Y - roster[2].Y, 2));
-                    angleB.Degrees = Math.Acos(
-                        (Math.Pow(
-                             Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) + Math.Pow(roster[1].Y - roster[2].Y, 2)),
-                             2) +
-                         Math.Pow(
-                             Math.Sqrt(Math.Pow(roster[0].X - roster[2].X, 2) + Math.Pow(roster[0].Y - roster[2].Y, 2)),
-                             2) -
-                         Math.Pow(
-                             Math.Sqrt(Math.Pow(roster[1].X - roster[0].X, 2) + Math.Pow(roster[1].Y - roster[0].Y, 2)),
-                             2)) / (2 *
-                                    Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) +
-                                              Math.Pow(roster[1].Y - roster[2].Y, 2)) *
-                                    Math.Sqrt(Math.Pow(roster[0].X - roster[2].X, 2) +
-                                              Math.Pow(roster[0].Y - roster[2].Y, 2)))) * (180 / Math.PI);
-                    Ca.Type = "Line Segment";
-                    Bb.P2 = roster[2];
-                    angleB.SideB.Length = Math.Sqrt(Math.Pow(roster[0].X - roster[2].X, 2) +
-                                                    Math.Pow(roster[0].Y - roster[2].Y, 2));
-                    tack.SideC.P1 = roster[2];
-                    tack.AngleC.P2 = roster[2];
-                    tack.SideB.Slope = ((Func<dynamic>) (() =>
+            tack.AngleB.SideB.P2 = roster[0];
+            Ac.P2 = roster[1];
+            Cc.P2 = roster[0];
+            Cc.P1 = roster[1];
+            B.Length = Math.Sqrt(
+                Math.Pow(roster[1].X - roster[2].X, 2) + Math.Pow(roster[1].Y - roster[2].Y, 2));
+            angleB.Degrees = Math.Acos(
+                (Math.Pow(
+                     Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) + Math.Pow(roster[1].Y - roster[2].Y, 2)),
+                     2) +
+                 Math.Pow(
+                     Math.Sqrt(Math.Pow(roster[0].X - roster[2].X, 2) + Math.Pow(roster[0].Y - roster[2].Y, 2)),
+                     2) -
+                 Math.Pow(
+                     Math.Sqrt(Math.Pow(roster[1].X - roster[0].X, 2) + Math.Pow(roster[1].Y - roster[0].Y, 2)),
+                     2)) / (2 *
+                            Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) +
+                                      Math.Pow(roster[1].Y - roster[2].Y, 2)) *
+                            Math.Sqrt(Math.Pow(roster[0].X - roster[2].X, 2) +
+                                      Math.Pow(roster[0].Y - roster[2].Y, 2)))) * (180 / Math.PI);
+            Ca.Type = "Line Segment";
+            Bb.P2 = roster[2];
+            angleB.SideB.Length = Math.Sqrt(Math.Pow(roster[0].X - roster[2].X, 2) +
+                                            Math.Pow(roster[0].Y - roster[2].Y, 2));
+            tack.SideC.P1 = roster[2];
+            tack.AngleC.P2 = roster[2];
+            tack.SideB.Slope = ((Func<dynamic>) (() =>
+            {
+                dynamic dd = new ExpandoObject();
+                return Math.Abs((double) roster[2].X - roster[1].X) <= 0.0001
+                    ? ((Func<dynamic>) (() =>
                     {
-                        dynamic dd = new ExpandoObject();
-                        return Math.Abs((double) roster[2].X - roster[1].X) <= 0.0001
-                            ? ((Func<dynamic>) (() =>
-                            {
-                                dd.IsSome = false;
-                                return dd;
-                            }))()
-                            : ((Func<double, dynamic>) (v1 =>
-                            {
-                                dd.IsSome = true;
-                                dd.Value = v1;
-                                return dd;
-                            }))(((double) roster[2].Y - roster[1].Y) / ((double) roster[2].X - roster[1].X));
-                    }))();
-                    Ac.Type = "Line Segment";
-                    tack.SideB.P1 = roster[1];
-                    Cc.Type = "Line Segment";
-                    angleB.SideA.Type = "Line Segment";
-                    C.P2 = roster[0];
-                    angleB.SideB.Type = "Line Segment";
-                    angleB.SideA.Length = Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) +
-                                                    Math.Pow(roster[1].Y - roster[2].Y, 2));
-                    B.P2 = roster[2];
-                    tack.AngleC.SideB.P1 = roster[2];
-                    Ab.Length = Math.Sqrt(Math.Pow(roster[2].X - roster[0].X, 2) +
+                        dd.IsSome = false;
+                        return dd;
+                    }))()
+                    : ((Func<double, dynamic>) (v1 =>
+                    {
+                        dd.IsSome = true;
+                        dd.Value = v1;
+                        return dd;
+                    }))(((double) roster[2].Y - roster[1].Y) / ((double) roster[2].X - roster[1].X));
+            }))();
+            Ac.Type = "Line Segment";
+            tack.SideB.P1 = roster[1];
+            Cc.Type = "Line Segment";
+            angleB.SideA.Type = "Line Segment";
+            C.P2 = roster[0];
+            angleB.SideB.Type = "Line Segment";
+            angleB.SideA.Length = Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) +
+                                            Math.Pow(roster[1].Y - roster[2].Y, 2));
+            B.P2 = roster[2];
+            tack.AngleC.SideB.P1 = roster[2];
+            Ab.Length = Math.Sqrt(Math.Pow(roster[2].X - roster[0].X, 2) +
+                                  Math.Pow(roster[2].Y - roster[0].Y, 2));
+            angleB.SideA.P2 = roster[2];
+            C.Type = "Line Segment";
+            Cb.Length = Math.Sqrt(Math.Pow(roster[2].X - roster[1].X, 2) +
+                                  Math.Pow(roster[2].Y - roster[1].Y, 2));
+            C.P1 = roster[2];
+            tack.AngleB.SideB.Length = Math.Sqrt(Math.Pow(roster[1].X - roster[0].X, 2) +
+                                                 Math.Pow(roster[1].Y - roster[0].Y, 2));
+            tack.AngleC.SideA.P2 = roster[1];
+            Cb.P1 = roster[2];
+            angleB.SideB.P1 = roster[0];
+            B.P1 = roster[1];
+            A.Slope = Math.Abs((double) roster[1].X - roster[0].X) <= 0.0001
+                ? ((Func<dynamic>) (() =>
+                {
+                    a.IsSome = false;
+                    return a;
+                }))()
+                : ((Func<double, dynamic>) (v =>
+                {
+                    a.IsSome = true;
+                    a.Value = v;
+                    return a;
+                }))(((double) roster[1].Y - roster[0].Y) / ((double) roster[1].X - roster[0].X));
+            tack.SideB.P2 = roster[2];
+            Bb.Slope = Math.Abs((double) roster[2].X - roster[0].X) <= 0.0001
+                ? ((Func<dynamic>) (() =>
+                {
+                    f.IsSome = false;
+                    return f;
+                }))()
+                : ((Func<double, dynamic>) (v4 =>
+                {
+                    f.IsSome = true;
+                    f.Value = v4;
+                    return f;
+                }))(((double) roster[2].Y - roster[0].Y) / ((double) roster[2].X - roster[0].X));
+            tack.Type = "Triangle";
+            tack.SideA.P2 = roster[1];
+            tack.SideC.Slope = Math.Abs((double) roster[0].X - roster[2].X) <= 0.0001
+                ? ((Func<dynamic>) (() =>
+                {
+                    i.IsSome = false;
+                    return i;
+                }))()
+                : ((Func<double, dynamic>) (v2 =>
+                {
+                    i.IsSome = true;
+                    i.Value = v2;
+                    return i;
+                }))(((double) roster[0].Y - roster[2].Y) / ((double) roster[0].X - roster[2].X));
+            Ca.Length = Math.Sqrt(Math.Pow(roster[0].X - roster[2].X, 2) +
+                                  Math.Pow(roster[0].Y - roster[2].Y, 2));
+            tack.AngleC.SideB.Type = "Line Segment";
+            angleB.P1 = roster[1];
+            B.Slope = Math.Abs((double) roster[2].X - roster[1].X) <= 0.0001
+                ? ((Func<dynamic>) (() =>
+                {
+                    j.IsSome = false;
+                    return j;
+                }))()
+                : ((Func<double, dynamic>) (v1 =>
+                {
+                    j.IsSome = true;
+                    j.Value = v1;
+                    return j;
+                }))(((double) roster[2].Y - roster[1].Y) / ((double) roster[2].X - roster[1].X));
+            tack.AngleB.Vertex = roster[0];
+            A.P2 = roster[1];
+            Cc.Length = Math.Sqrt(Math.Pow(roster[1].X - roster[0].X, 2) +
+                                  Math.Pow(roster[1].Y - roster[0].Y, 2));
+            tack.AngleB.SideA.P2 = roster[0];
+            Cb.Type = "Line Segment";
+            tack.AngleB.SideB.P1 = roster[1];
+            tack.P2 = roster[1];
+            tack.SideC.Length = Math.Sqrt(Math.Pow(roster[2].X - roster[0].X, 2) +
                                           Math.Pow(roster[2].Y - roster[0].Y, 2));
-                    angleB.SideA.P2 = roster[2];
-                    C.Type = "Line Segment";
-                    Cb.Length = Math.Sqrt(Math.Pow(roster[2].X - roster[1].X, 2) +
-                                          Math.Pow(roster[2].Y - roster[1].Y, 2));
-                    C.P1 = roster[2];
-                    tack.AngleB.SideB.Length = Math.Sqrt(Math.Pow(roster[1].X - roster[0].X, 2) +
-                                                         Math.Pow(roster[1].Y - roster[0].Y, 2));
-                    tack.AngleC.SideA.P2 = roster[1];
-                    Cb.P1 = roster[2];
-                    angleB.SideB.P1 = roster[0];
-                    B.P1 = roster[1];
-                    A.Slope = Math.Abs((double) roster[1].X - roster[0].X) <= 0.0001
+            Ab.P1 = roster[2];
+            tack.SideC.P2 = roster[0];
+            Ab.Type = "Line Segment";
+            tack.SideB.Type = "Line Segment";
+            Cc.Slope = Math.Abs((double) roster[0].X - roster[1].X) <= 0.0001
+                ? ((Func<dynamic>) (() =>
+                {
+                    b.IsSome = false;
+                    return b;
+                }))()
+                : ((Func<double, dynamic>) (v5 =>
+                {
+                    b.IsSome = true;
+                    b.Value = v5;
+                    return b;
+                }))(((double) roster[0].Y - roster[1].Y) / ((double) roster[0].X - roster[1].X));
+            C.Length = Math.Sqrt(
+                Math.Pow(roster[2].X - roster[0].X, 2) + Math.Pow(roster[2].Y - roster[0].Y, 2));
+            A.P1 = roster[0];
+            Ac.Length = Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) +
+                                  Math.Pow(roster[0].Y - roster[1].Y, 2));
+            angleB.SideA.P1 = roster[1];
+            Ab.P2 = roster[0];
+            C.Slope = Math.Abs((double) roster[0].X - roster[2].X) <= 0.0001
+                ? ((Func<dynamic>) (() =>
+                {
+                    i.IsSome = false;
+                    return i;
+                }))()
+                : ((Func<double, dynamic>) (v2 =>
+                {
+                    i.IsSome = true;
+                    i.Value = v2;
+                    return i;
+                }))(((double) roster[0].Y - roster[2].Y) / ((double) roster[0].X - roster[2].X));
+            tack.AngleB.SideA.Slope = Math.Abs((double) roster[0].X - roster[2].X) <= 0.0001
+                ? ((Func<dynamic>) (() =>
+                {
+                    c.IsSome = false;
+                    return c;
+                }))()
+                : ((Func<double, dynamic>) (v6 =>
+                {
+                    c.IsSome = true;
+                    c.Value = v6;
+                    return c;
+                }))(((double) roster[0].Y - roster[2].Y) / ((double) roster[0].X - roster[2].X));
+            angleB.Vertex = roster[2];
+            tack.SideC.Type = "Line Segment";
+            tack.SideA.P1 = roster[0];
+            Cb.P2 = roster[1];
+            tack.Area = 0.25 * Math.Sqrt(
+                (Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) + Math.Pow(roster[0].Y - roster[1].Y, 2)) +
+                 Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) + Math.Pow(roster[1].Y - roster[2].Y, 2)) +
+                 Math.Sqrt(Math.Pow(roster[2].X - roster[0].X, 2) + Math.Pow(roster[2].Y - roster[0].Y, 2))) *
+                (-Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) + Math.Pow(roster[0].Y - roster[1].Y, 2)) +
+                 Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) + Math.Pow(roster[1].Y - roster[2].Y, 2)) +
+                 Math.Sqrt(Math.Pow(roster[2].X - roster[0].X, 2) + Math.Pow(roster[2].Y - roster[0].Y, 2))) *
+                (Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) + Math.Pow(roster[0].Y - roster[1].Y, 2)) -
+                 Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) + Math.Pow(roster[1].Y - roster[2].Y, 2)) +
+                 Math.Sqrt(Math.Pow(roster[2].X - roster[0].X, 2) +
+                           Math.Pow(roster[2].Y - roster[0].Y, 2))) *
+                (Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) + Math.Pow(roster[0].Y - roster[1].Y, 2)) +
+                 Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) + Math.Pow(roster[1].Y - roster[2].Y, 2)) -
+                 Math.Sqrt(Math.Pow(roster[2].X - roster[0].X, 2) +
+                           Math.Pow(roster[2].Y - roster[0].Y, 2))));
+            tack.AngleB.P1 = roster[2];
+            A.Length = Math.Sqrt(
+                Math.Pow(roster[0].X - roster[1].X, 2) + Math.Pow(roster[0].Y - roster[1].Y, 2));
+            tack.AngleB.SideA.P1 = roster[2];
+            tack.AngleC.SideA.Slope = Math.Abs((double) roster[1].X - roster[0].X) <= 0.0001
+                ? ((Func<dynamic>) (() =>
+                {
+                    e.IsSome = false;
+                    return e;
+                }))()
+                : ((Func<double, dynamic>) (v9 =>
+                {
+                    e.IsSome = true;
+                    e.Value = v9;
+                    return e;
+                }))(((double) roster[1].Y - roster[0].Y) / ((double) roster[1].X - roster[0].X));
+            tack.SideA.Length = Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) +
+                                          Math.Pow(roster[0].Y - roster[1].Y, 2));
+            tack.AngleC.P1 = roster[0];
+            tack.AngleC.SideB.Length = Math.Sqrt(Math.Pow(roster[2].X - roster[1].X, 2) +
+                                                 Math.Pow(roster[2].Y - roster[1].Y, 2));
+        }
+        else
+        {
+            gs = gs(1);
+            if (roster.Count == gs(MathHelper.no) && (dC == gs(MathHelper.no) - 1 && ((Func<bool>) (() =>
+                {
+                    if (roster[^1] == MathHelper.no && roster[0] == MathHelper.no) return true;
+                    if (MathHelper.no == roster[0] || roster[^1] == MathHelper.no) return false;
+                    if ((IDictionary<string, dynamic>) roster[^1] != MathHelper.no &&
+                        ((ICollection<KeyValuePair<string, dynamic>>) roster[0]).Count !=
+                        ((IDictionary<string, dynamic>) roster[^1]).Count) return false;
+                    foreach (var (k, pv) in (ICollection<KeyValuePair<string, dynamic>>) roster[0])
+                    {
+                        var o1 = MathHelper.no;
+                        if ((IDictionary<string, dynamic>) roster[^1] != MathHelper.no &&
+                            !((IDictionary<string, dynamic>) roster[^1]).TryGetValue(k, out o1)) return false;
+                        if (!Equals(o1, pv)) return false;
+                    }
+
+                    return true;
+                }))() && deg.All(a => Math.Abs((int) (a - (45 + 45))) <= 0.001)))
+            {
+                tack.Type = "Rectangle";
+                tack.P3 = roster[2];
+                tack.P4 = roster[3];
+                dynamic r = new ExpandoObject();
+                dynamic Ad = new ExpandoObject();
+                dynamic r1 = new ExpandoObject();
+                dynamic Bd = new ExpandoObject();
+                dynamic Cd = new ExpandoObject();
+                dynamic D = new ExpandoObject();
+                Cd.Type = "Line Segment";
+                Cd.P1 = roster[2];
+                Cd.P2 = roster[3];
+                Cd.Length = Math.Sqrt(Math.Pow(roster[2].X - roster[3].X, 2) +
+                                      Math.Pow(roster[2].Y - roster[3].Y, 2));
+                dynamic r3 = new ExpandoObject();
+                Cd.Slope = Math.Abs((double) roster[3].X - roster[2].X) <= 0.0001
+                    ? ((Func<dynamic>) (() =>
+                    {
+                        r3.IsSome = false;
+                        return r3;
+                    }))()
+                    : ((Func<double, dynamic>) (v2 =>
+                    {
+                        r3.IsSome = true;
+                        r3.Value = v2;
+                        return r3;
+                    }))(((double) roster[3].Y - roster[2].Y) / ((double) roster[3].X - roster[2].X));
+                D.Type = "Line Segment";
+                D.P1 = roster[3];
+                D.P2 = roster[0];
+                dynamic r5 = new ExpandoObject();
+                D.Slope = Math.Abs((double) roster[0].X - roster[3].X) <= 0.0001
+                    ? ((Func<dynamic>) (() =>
+                    {
+                        r5.IsSome = false;
+                        return r5;
+                    }))()
+                    : ((Func<double, dynamic>) (v3 =>
+                    {
+                        r5.IsSome = true;
+                        r5.Value = v3;
+                        return r5;
+                    }))(((double) roster[0].Y - roster[3].Y) / ((double) roster[0].X - roster[3].X));
+                tack.SideC = new ExpandoObject();
+                tack.SideC.Length = Math.Sqrt(Math.Pow(roster[2].X - roster[3].X, 2) +
+                                              Math.Pow(roster[2].Y - roster[3].Y, 2));
+                tack.SideC.Type = "Line Segment";
+                tack.SideA = new ExpandoObject();
+                tack.SideB = new ExpandoObject();
+                tack.SideB.Type = "Line Segment";
+                tack.SideA.P1 = roster[0];
+                tack.SideA.P2 = roster[1];
+                tack.SideA.Length = Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) +
+                                              Math.Pow(roster[0].Y - roster[1].Y, 2));
+                tack.SideA.Slope = Math.Abs((double) roster[1].X - roster[0].X) <= 0.0001
+                    ? ((Func<dynamic>) (() =>
+                    {
+                        r.IsSome = false;
+                        return r;
+                    }))()
+                    : ((Func<double, dynamic>) (v =>
+                    {
+                        r.IsSome = true;
+                        r.Value = v;
+                        return r;
+                    }))(((double) roster[1].Y - roster[0].Y) / ((double) roster[1].X - roster[0].X));
+                tack.SideD = D;
+                tack.P1 = roster[0];
+                tack.SideC.P1 = roster[2];
+                tack.Length = Math.Sqrt(Math.Pow(roster[3].X - roster[0].X, 2) +
+                                        Math.Pow(roster[3].Y - roster[0].Y, 2));
+                tack.SideB.P2 = roster[2];
+                tack.SideB.Length = Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) +
+                                              Math.Pow(roster[1].Y - roster[2].Y, 2));
+                tack.SideB.Slope = ((Func<dynamic>) (() =>
+                {
+                    dynamic r1 = new ExpandoObject();
+                    return Math.Abs((double) roster[2].X - roster[1].X) <= 0.0001
                         ? ((Func<dynamic>) (() =>
                         {
-                            a.IsSome = false;
-                            return a;
-                        }))()
-                        : ((Func<double, dynamic>) (v =>
-                        {
-                            a.IsSome = true;
-                            a.Value = v;
-                            return a;
-                        }))(((double) roster[1].Y - roster[0].Y) / ((double) roster[1].X - roster[0].X));
-                    tack.SideB.P2 = roster[2];
-                    Bb.Slope = Math.Abs((double) roster[2].X - roster[0].X) <= 0.0001
-                        ? ((Func<dynamic>) (() =>
-                        {
-                            f.IsSome = false;
-                            return f;
-                        }))()
-                        : ((Func<double, dynamic>) (v4 =>
-                        {
-                            f.IsSome = true;
-                            f.Value = v4;
-                            return f;
-                        }))(((double) roster[2].Y - roster[0].Y) / ((double) roster[2].X - roster[0].X));
-                    tack.Type = "Triangle";
-                    tack.SideA.P2 = roster[1];
-                    tack.SideC.Slope = Math.Abs((double) roster[0].X - roster[2].X) <= 0.0001
-                        ? ((Func<dynamic>) (() =>
-                        {
-                            i.IsSome = false;
-                            return i;
-                        }))()
-                        : ((Func<double, dynamic>) (v2 =>
-                        {
-                            i.IsSome = true;
-                            i.Value = v2;
-                            return i;
-                        }))(((double) roster[0].Y - roster[2].Y) / ((double) roster[0].X - roster[2].X));
-                    Ca.Length = Math.Sqrt(Math.Pow(roster[0].X - roster[2].X, 2) +
-                                          Math.Pow(roster[0].Y - roster[2].Y, 2));
-                    tack.AngleC.SideB.Type = "Line Segment";
-                    angleB.P1 = roster[1];
-                    B.Slope = Math.Abs((double) roster[2].X - roster[1].X) <= 0.0001
-                        ? ((Func<dynamic>) (() =>
-                        {
-                            j.IsSome = false;
-                            return j;
+                            r1.IsSome = false;
+                            return r1;
                         }))()
                         : ((Func<double, dynamic>) (v1 =>
                         {
-                            j.IsSome = true;
-                            j.Value = v1;
-                            return j;
+                            r1.IsSome = true;
+                            r1.Value = v1;
+                            return r1;
                         }))(((double) roster[2].Y - roster[1].Y) / ((double) roster[2].X - roster[1].X));
-                    tack.AngleB.Vertex = roster[0];
-                    A.P2 = roster[1];
-                    Cc.Length = Math.Sqrt(Math.Pow(roster[1].X - roster[0].X, 2) +
-                                          Math.Pow(roster[1].Y - roster[0].Y, 2));
-                    tack.AngleB.SideA.P2 = roster[0];
-                    Cb.Type = "Line Segment";
-                    tack.AngleB.SideB.P1 = roster[1];
-                    tack.P2 = roster[1];
-                    tack.SideC.Length = Math.Sqrt(Math.Pow(roster[2].X - roster[0].X, 2) +
-                                                  Math.Pow(roster[2].Y - roster[0].Y, 2));
-                    Ab.P1 = roster[2];
-                    tack.SideC.P2 = roster[0];
-                    Ab.Type = "Line Segment";
-                    tack.SideB.Type = "Line Segment";
-                    Cc.Slope = Math.Abs((double) roster[0].X - roster[1].X) <= 0.0001
+                }))();
+                tack.SideB.P1 = roster[1];
+                tack.SideC.P2 = roster[3];
+                tack.SideC.Slope = ((Func<dynamic>) (() =>
+                    Math.Abs((double) roster[3].X - roster[2].X) <= 0.0001
                         ? ((Func<dynamic>) (() =>
                         {
-                            b.IsSome = false;
-                            return b;
-                        }))()
-                        : ((Func<double, dynamic>) (v5 =>
-                        {
-                            b.IsSome = true;
-                            b.Value = v5;
-                            return b;
-                        }))(((double) roster[0].Y - roster[1].Y) / ((double) roster[0].X - roster[1].X));
-                    C.Length = Math.Sqrt(
-                        Math.Pow(roster[2].X - roster[0].X, 2) + Math.Pow(roster[2].Y - roster[0].Y, 2));
-                    A.P1 = roster[0];
-                    Ac.Length = Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) +
-                                          Math.Pow(roster[0].Y - roster[1].Y, 2));
-                    angleB.SideA.P1 = roster[1];
-                    Ab.P2 = roster[0];
-                    C.Slope = Math.Abs((double) roster[0].X - roster[2].X) <= 0.0001
-                        ? ((Func<dynamic>) (() =>
-                        {
-                            i.IsSome = false;
-                            return i;
+                            r3.IsSome = false;
+                            return r3;
                         }))()
                         : ((Func<double, dynamic>) (v2 =>
                         {
-                            i.IsSome = true;
-                            i.Value = v2;
-                            return i;
-                        }))(((double) roster[0].Y - roster[2].Y) / ((double) roster[0].X - roster[2].X));
-                    tack.AngleB.SideA.Slope = Math.Abs((double) roster[0].X - roster[2].X) <= 0.0001
-                        ? ((Func<dynamic>) (() =>
-                        {
-                            c.IsSome = false;
-                            return c;
-                        }))()
-                        : ((Func<double, dynamic>) (v6 =>
-                        {
-                            c.IsSome = true;
-                            c.Value = v6;
-                            return c;
-                        }))(((double) roster[0].Y - roster[2].Y) / ((double) roster[0].X - roster[2].X));
-                    angleB.Vertex = roster[2];
-                    tack.SideC.Type = "Line Segment";
-                    tack.SideA.P1 = roster[0];
-                    Cb.P2 = roster[1];
-                    tack.Area = 0.25 * Math.Sqrt(
-                        (Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) + Math.Pow(roster[0].Y - roster[1].Y, 2)) +
-                         Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) + Math.Pow(roster[1].Y - roster[2].Y, 2)) +
-                         Math.Sqrt(Math.Pow(roster[2].X - roster[0].X, 2) + Math.Pow(roster[2].Y - roster[0].Y, 2))) *
-                        (-Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) + Math.Pow(roster[0].Y - roster[1].Y, 2)) +
-                         Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) + Math.Pow(roster[1].Y - roster[2].Y, 2)) +
-                         Math.Sqrt(Math.Pow(roster[2].X - roster[0].X, 2) + Math.Pow(roster[2].Y - roster[0].Y, 2))) *
-                        (Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) + Math.Pow(roster[0].Y - roster[1].Y, 2)) -
-                         Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) + Math.Pow(roster[1].Y - roster[2].Y, 2)) +
-                         Math.Sqrt(Math.Pow(roster[2].X - roster[0].X, 2) +
-                                   Math.Pow(roster[2].Y - roster[0].Y, 2))) *
-                        (Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) + Math.Pow(roster[0].Y - roster[1].Y, 2)) +
-                         Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) + Math.Pow(roster[1].Y - roster[2].Y, 2)) -
-                         Math.Sqrt(Math.Pow(roster[2].X - roster[0].X, 2) +
-                                   Math.Pow(roster[2].Y - roster[0].Y, 2))));
-                    tack.AngleB.P1 = roster[2];
-                    A.Length = Math.Sqrt(
-                        Math.Pow(roster[0].X - roster[1].X, 2) + Math.Pow(roster[0].Y - roster[1].Y, 2));
-                    tack.AngleB.SideA.P1 = roster[2];
-                    tack.AngleC.SideA.Slope = Math.Abs((double) roster[1].X - roster[0].X) <= 0.0001
-                        ? ((Func<dynamic>) (() =>
-                        {
-                            e.IsSome = false;
-                            return e;
-                        }))()
-                        : ((Func<double, dynamic>) (v9 =>
-                        {
-                            e.IsSome = true;
-                            e.Value = v9;
-                            return e;
-                        }))(((double) roster[1].Y - roster[0].Y) / ((double) roster[1].X - roster[0].X));
-                    tack.SideA.Length = Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) +
-                                                  Math.Pow(roster[0].Y - roster[1].Y, 2));
-                    tack.AngleC.P1 = roster[0];
-                    tack.AngleC.SideB.Length = Math.Sqrt(Math.Pow(roster[2].X - roster[1].X, 2) +
-                                                         Math.Pow(roster[2].Y - roster[1].Y, 2));
-                }
-                else
+                            r3.IsSome = true;
+                            r3.Value = v2;
+                            return r3;
+                        }))(((double) roster[3].Y - roster[2].Y) / ((double) roster[3].X - roster[2].X))))();
+                tack.SideA.Type = "Line Segment";
+                tack.Area =
+                    Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) + Math.Pow(roster[0].Y - roster[1].Y, 2)) *
+                    Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) + Math.Pow(roster[1].Y - roster[2].Y, 2));
+                tack.P2 = roster[1];
+                tack.Perimeter =
+                    Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) + Math.Pow(roster[0].Y - roster[1].Y, 2)) +
+                    Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) + Math.Pow(roster[1].Y - roster[2].Y, 2)) +
+                    Math.Sqrt(Math.Pow(roster[2].X - roster[3].X, 2) + Math.Pow(roster[2].Y - roster[3].Y, 2)) +
+                    Math.Sqrt(Math.Pow(roster[3].X - roster[0].X, 2) + Math.Pow(roster[3].Y - roster[0].Y, 2));
+            }
+            else
+            {
+                gs = gs(-4);
+                if (gs(MathHelper.no) < roster.Count && !(gs(MathHelper.no) == -1))
                 {
-                    gs = gs(1);
-                    if (roster.Count == gs(MathHelper.no) && (dC == gs(MathHelper.no) - 1 && ((Func<bool>) (() =>
-                        {
-                            if (roster[^1] == MathHelper.no && roster[0] == MathHelper.no) return true;
-                            if (MathHelper.no == roster[0] || roster[^1] == MathHelper.no) return false;
-                            if ((IDictionary<string, dynamic>) roster[^1] != MathHelper.no &&
-                                ((ICollection<KeyValuePair<string, dynamic>>) roster[0]).Count !=
-                                ((IDictionary<string, dynamic>) roster[^1]).Count) return false;
-                            foreach (var (k, pv) in (ICollection<KeyValuePair<string, dynamic>>) roster[0])
-                            {
-                                var o1 = MathHelper.no;
-                                if ((IDictionary<string, dynamic>) roster[^1] != MathHelper.no &&
-                                    !((IDictionary<string, dynamic>) roster[^1]).TryGetValue(k, out o1)) return false;
-                                if (!Equals(o1, pv)) return false;
-                            }
-
-                            return true;
-                        }))() && deg.All(a => Math.Abs((int) (a - (45 + 45))) <= 0.001)))
+                    tack.Type = "Other";
+                    tack.Points = roster;
+                    tack.IsClosed = ((Func<bool>) (() =>
                     {
-                        tack.Type = "Rectangle";
-                        tack.P3 = roster[2];
-                        tack.P4 = roster[3];
+                        if (roster[0] == MathHelper.no && roster[^1] == MathHelper.no) return true;
+                        if (roster[0] == MathHelper.no || roster[^1] == MathHelper.no) return false;
+                        if ((IDictionary<string, dynamic>) roster[^1] != MathHelper.no &&
+                            ((ICollection<KeyValuePair<string, dynamic>>) roster[0]).Count !=
+                            ((IDictionary<string, dynamic>) roster[^1]).Count) return false;
+                        foreach (var pair in (ICollection<KeyValuePair<string, dynamic>>) roster[0])
+                        {
+                            var o = MathHelper.no;
+                            if ((IDictionary<string, dynamic>) roster[^1] != MathHelper.no &&
+                                !((IDictionary<string, dynamic>) roster[^1]).TryGetValue(pair.Key, out o))
+                                return false;
+                            if (!Equals(o, pair.Value)) return false;
+                        }
+
+                        return true;
+                    }))();
+                    tack.IsOpen = !((Func<bool>) (() =>
+                    {
+                        if (roster[0] == MathHelper.no && roster[^1] == MathHelper.no) return true;
+                        if (roster[0] == MathHelper.no || roster[^1] == MathHelper.no) return false;
+                        if ((IDictionary<string, dynamic>) roster[^1] != MathHelper.no &&
+                            ((ICollection<KeyValuePair<string, dynamic>>) roster[0]).Count !=
+                            ((IDictionary<string, dynamic>) roster[^1]).Count) return false;
+                        foreach (var pair1 in (ICollection<KeyValuePair<string, dynamic>>) roster[0])
+                        {
+                            var o1 = MathHelper.no;
+                            if ((IDictionary<string, dynamic>) roster[^1] != MathHelper.no &&
+                                !((IDictionary<string, dynamic>) roster[^1]).TryGetValue(pair1.Key, out o1))
+                                return false;
+                            if (!Equals(o1, pair1.Value)) return false;
+                        }
+
+                        return true;
+                    }))();
+
+                    var segments = new List<double>();
+
+                    for (var i = 1; i < roster.Count; i++)
+                    {
+                        dynamic side = new ExpandoObject();
+                        side.Type = "Line Segment";
+                        side.P1 = roster[i - 1];
+                        side.P2 = roster[i];
+                        side.Length = Math.Sqrt(Math.Pow(roster[i - 1].X - roster[i].X, 2) +
+                                                Math.Pow(roster[i - 1].Y - roster[i].Y, 2));
                         dynamic r = new ExpandoObject();
-                        dynamic Ad = new ExpandoObject();
-                        dynamic r1 = new ExpandoObject();
-                        dynamic Bd = new ExpandoObject();
-                        dynamic Cd = new ExpandoObject();
-                        dynamic D = new ExpandoObject();
-                        Cd.Type = "Line Segment";
-                        Cd.P1 = roster[2];
-                        Cd.P2 = roster[3];
-                        Cd.Length = Math.Sqrt(Math.Pow(roster[2].X - roster[3].X, 2) +
-                                              Math.Pow(roster[2].Y - roster[3].Y, 2));
-                        dynamic r3 = new ExpandoObject();
-                        Cd.Slope = Math.Abs((double) roster[3].X - roster[2].X) <= 0.0001
-                            ? ((Func<dynamic>) (() =>
-                            {
-                                r3.IsSome = false;
-                                return r3;
-                            }))()
-                            : ((Func<double, dynamic>) (v2 =>
-                            {
-                                r3.IsSome = true;
-                                r3.Value = v2;
-                                return r3;
-                            }))(((double) roster[3].Y - roster[2].Y) / ((double) roster[3].X - roster[2].X));
-                        D.Type = "Line Segment";
-                        D.P1 = roster[3];
-                        D.P2 = roster[0];
-                        dynamic r5 = new ExpandoObject();
-                        D.Slope = Math.Abs((double) roster[0].X - roster[3].X) <= 0.0001
-                            ? ((Func<dynamic>) (() =>
-                            {
-                                r5.IsSome = false;
-                                return r5;
-                            }))()
-                            : ((Func<double, dynamic>) (v3 =>
-                            {
-                                r5.IsSome = true;
-                                r5.Value = v3;
-                                return r5;
-                            }))(((double) roster[0].Y - roster[3].Y) / ((double) roster[0].X - roster[3].X));
-                        tack.SideC = new ExpandoObject();
-                        tack.SideC.Length = Math.Sqrt(Math.Pow(roster[2].X - roster[3].X, 2) +
-                                                      Math.Pow(roster[2].Y - roster[3].Y, 2));
-                        tack.SideC.Type = "Line Segment";
-                        tack.SideA = new ExpandoObject();
-                        tack.SideB = new ExpandoObject();
-                        tack.SideB.Type = "Line Segment";
-                        tack.SideA.P1 = roster[0];
-                        tack.SideA.P2 = roster[1];
-                        tack.SideA.Length = Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) +
-                                                      Math.Pow(roster[0].Y - roster[1].Y, 2));
-                        tack.SideA.Slope = Math.Abs((double) roster[1].X - roster[0].X) <= 0.0001
+                        side.Slope = Math.Abs((double) roster[i].X - roster[i - 1].X) <= 0.0001
                             ? ((Func<dynamic>) (() =>
                             {
                                 r.IsSome = false;
@@ -803,135 +929,14 @@ internal class Utils
                                 r.IsSome = true;
                                 r.Value = v;
                                 return r;
-                            }))(((double) roster[1].Y - roster[0].Y) / ((double) roster[1].X - roster[0].X));
-                        tack.SideD = D;
-                        tack.P1 = roster[0];
-                        tack.SideC.P1 = roster[2];
-                        tack.Length = Math.Sqrt(Math.Pow(roster[3].X - roster[0].X, 2) +
-                                                Math.Pow(roster[3].Y - roster[0].Y, 2));
-                        tack.SideB.P2 = roster[2];
-                        tack.SideB.Length = Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) +
-                                                      Math.Pow(roster[1].Y - roster[2].Y, 2));
-                        tack.SideB.Slope = ((Func<dynamic>) (() =>
-                        {
-                            dynamic r1 = new ExpandoObject();
-                            return Math.Abs((double) roster[2].X - roster[1].X) <= 0.0001
-                                ? ((Func<dynamic>) (() =>
-                                {
-                                    r1.IsSome = false;
-                                    return r1;
-                                }))()
-                                : ((Func<double, dynamic>) (v1 =>
-                                {
-                                    r1.IsSome = true;
-                                    r1.Value = v1;
-                                    return r1;
-                                }))(((double) roster[2].Y - roster[1].Y) / ((double) roster[2].X - roster[1].X));
-                        }))();
-                        tack.SideB.P1 = roster[1];
-                        tack.SideC.P2 = roster[3];
-                        tack.SideC.Slope = ((Func<dynamic>) (() =>
-                            Math.Abs((double) roster[3].X - roster[2].X) <= 0.0001
-                                ? ((Func<dynamic>) (() =>
-                                {
-                                    r3.IsSome = false;
-                                    return r3;
-                                }))()
-                                : ((Func<double, dynamic>) (v2 =>
-                                {
-                                    r3.IsSome = true;
-                                    r3.Value = v2;
-                                    return r3;
-                                }))(((double) roster[3].Y - roster[2].Y) / ((double) roster[3].X - roster[2].X))))();
-                        tack.SideA.Type = "Line Segment";
-                        tack.Area =
-                            Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) + Math.Pow(roster[0].Y - roster[1].Y, 2)) *
-                            Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) + Math.Pow(roster[1].Y - roster[2].Y, 2));
-                        tack.P2 = roster[1];
-                        tack.Perimeter =
-                            Math.Sqrt(Math.Pow(roster[0].X - roster[1].X, 2) + Math.Pow(roster[0].Y - roster[1].Y, 2)) +
-                            Math.Sqrt(Math.Pow(roster[1].X - roster[2].X, 2) + Math.Pow(roster[1].Y - roster[2].Y, 2)) +
-                            Math.Sqrt(Math.Pow(roster[2].X - roster[3].X, 2) + Math.Pow(roster[2].Y - roster[3].Y, 2)) +
-                            Math.Sqrt(Math.Pow(roster[3].X - roster[0].X, 2) + Math.Pow(roster[3].Y - roster[0].Y, 2));
+                            }))(((double) roster[i].Y - roster[i - 1].Y) /
+                                ((double) roster[i].X - roster[i - 1].X));
+                        segments.Add(side.Length);
                     }
-                    else
-                    {
-                        gs = gs(-4);
-                        if (gs(MathHelper.no) < roster.Count && !(gs(MathHelper.no) == -1))
-                        {
-                            tack.Type = "Other";
-                            tack.Points = roster;
-                            tack.IsClosed = ((Func<bool>) (() =>
-                            {
-                                if (roster[0] == MathHelper.no && roster[^1] == MathHelper.no) return true;
-                                if (roster[0] == MathHelper.no || roster[^1] == MathHelper.no) return false;
-                                if ((IDictionary<string, dynamic>) roster[^1] != MathHelper.no &&
-                                    ((ICollection<KeyValuePair<string, dynamic>>) roster[0]).Count !=
-                                    ((IDictionary<string, dynamic>) roster[^1]).Count) return false;
-                                foreach (var pair in (ICollection<KeyValuePair<string, dynamic>>) roster[0])
-                                {
-                                    var o = MathHelper.no;
-                                    if ((IDictionary<string, dynamic>) roster[^1] != MathHelper.no &&
-                                        !((IDictionary<string, dynamic>) roster[^1]).TryGetValue(pair.Key, out o))
-                                        return false;
-                                    if (!Equals(o, pair.Value)) return false;
-                                }
 
-                                return true;
-                            }))();
-                            tack.IsOpen = !((Func<bool>) (() =>
-                            {
-                                if (roster[0] == MathHelper.no && roster[^1] == MathHelper.no) return true;
-                                if (roster[0] == MathHelper.no || roster[^1] == MathHelper.no) return false;
-                                if ((IDictionary<string, dynamic>) roster[^1] != MathHelper.no &&
-                                    ((ICollection<KeyValuePair<string, dynamic>>) roster[0]).Count !=
-                                    ((IDictionary<string, dynamic>) roster[^1]).Count) return false;
-                                foreach (var pair1 in (ICollection<KeyValuePair<string, dynamic>>) roster[0])
-                                {
-                                    var o1 = MathHelper.no;
-                                    if ((IDictionary<string, dynamic>) roster[^1] != MathHelper.no &&
-                                        !((IDictionary<string, dynamic>) roster[^1]).TryGetValue(pair1.Key, out o1))
-                                        return false;
-                                    if (!Equals(o1, pair1.Value)) return false;
-                                }
-
-                                return true;
-                            }))();
-
-                            var segments = new List<double>();
-
-                            for (var i = 1; i < roster.Count; i++)
-                            {
-                                dynamic side = new ExpandoObject();
-                                side.Type = "Line Segment";
-                                side.P1 = roster[i - 1];
-                                side.P2 = roster[i];
-                                side.Length = Math.Sqrt(Math.Pow(roster[i - 1].X - roster[i].X, 2) +
-                                                        Math.Pow(roster[i - 1].Y - roster[i].Y, 2));
-                                dynamic r = new ExpandoObject();
-                                side.Slope = Math.Abs((double) roster[i].X - roster[i - 1].X) <= 0.0001
-                                    ? ((Func<dynamic>) (() =>
-                                    {
-                                        r.IsSome = false;
-                                        return r;
-                                    }))()
-                                    : ((Func<double, dynamic>) (v =>
-                                    {
-                                        r.IsSome = true;
-                                        r.Value = v;
-                                        return r;
-                                    }))(((double) roster[i].Y - roster[i - 1].Y) /
-                                        ((double) roster[i].X - roster[i - 1].X));
-                                segments.Add(side.Length);
-                            }
-
-                            tack.Length = segments.Sum();
-                        }
-                    }
+                    tack.Length = segments.Sum();
                 }
             }
         }
-
-        return tack;
     }
 }
