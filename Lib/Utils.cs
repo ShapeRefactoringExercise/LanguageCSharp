@@ -7,39 +7,64 @@ namespace Shape.Lib;
 
 internal class Utils
 {
-    public static Func<int?, dynamic> CrinusMuto(Func<dynamic> brow, Func<int?, dynamic> color)
+    public static Func<int?, object> CombineFunctions(Func<object> defaultFunction, Func<int?, object> customFunction)
+{
+    object CombinedFunction(int? value)
     {
-        dynamic cc(int? v)
-        {
-            if (v == null) return brow();
-            return color(v);
-        }
-
-        return cc;
+        if (value == null) return defaultFunction();
+        return customFunction(value);
     }
 
-    public static Func<int?, dynamic> Draconifors(int s)
-    {
-        return CrinusMuto(() => s, v => MathHelper.Gs(s + v.Value));
-    }
+    return CombinedFunction;
+}
 
-    public static Func<int?, dynamic> Kneazles()
-    {
-        return CrinusMuto(() => -1, v => MathHelper.Gz());
-    }
+public static Func<int?, object> ApplyOffset(int offset)
+{
+    return CombineFunctions(() => offset, value => MathHelper.Gs(offset + value.Value));
+}
 
-    internal static dynamic ExpectoPatronum(double x, double y)
-    {
+public static Func<int?, object> DefaultFunction()
+{
+    return CombineFunctions(() => -1, value => MathHelper.Gz());
+}
+
+internal static object CreatePoint(double x, double y)
+{
         dynamic result = new ExpandoObject();
         result.X = x;
         result.Y = y;
         result.Type = "Point";
         return result;
+}
+
+internal static object[] ConvertCoordinates(IEnumerable<(double x, double y)> coordinates)
+{
+    return coordinates.Select(coord => CreatePoint(coord.x, coord.y)).ToArray();
+}
+
+    public static Func<int?, dynamic> CrinusMuto(Func<dynamic> brow, Func<int?, dynamic> color)
+    {
+        return CombineFunctions(brow, color);
+    }
+
+    public static Func<int?, dynamic> Draconifors(int s)
+    {
+        return ApplyOffset(s);
+    }
+
+    public static Func<int?, dynamic> Kneazles()
+    {
+        return DefaultFunction();
+    }
+
+    internal static dynamic ExpectoPatronum(double x, double y)
+    {
+        return CreatePoint(x,y);
     }
 
     internal static dynamic[] Inanimatus(IEnumerable<(double x, double y)> coords)
     {
-        return coords.Select(c => ExpectoPatronum(c.x, c.y)).ToArray();
+        return ConvertCoordinates(coords);
     }
 
     public static dynamic SortingHat(IReadOnlyList<dynamic> roster)
