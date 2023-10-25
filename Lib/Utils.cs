@@ -42,32 +42,8 @@ internal static object[] ConvertCoordinates(IEnumerable<(double x, double y)> co
     return coordinates.Select(coord => CreatePoint(coord.x, coord.y)).ToArray();
 }
 
-    public static Func<int?, dynamic> CrinusMuto(Func<dynamic> brow, Func<int?, dynamic> color)
-    {
-        return CombineFunctions(brow, color);
-    }
 
-    public static Func<int?, dynamic> Draconifors(int s)
-    {
-        return ApplyOffset(s);
-    }
-
-    public static Func<int?, dynamic> Kneazles()
-    {
-        return DefaultFunction();
-    }
-
-    internal static dynamic ExpectoPatronum(double x, double y)
-    {
-        return CreatePoint(x,y);
-    }
-
-    internal static dynamic[] Inanimatus(IEnumerable<(double x, double y)> coords)
-    {
-        return ConvertCoordinates(coords);
-    }
-
-    public static dynamic SortingHat(IReadOnlyList<dynamic> roster)
+public static dynamic SortingHat(IReadOnlyList<dynamic> roster)
     {
         dynamic tack;
 
