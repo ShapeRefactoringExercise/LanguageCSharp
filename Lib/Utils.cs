@@ -866,64 +866,77 @@ public static dynamic SortingHat(IReadOnlyList<dynamic> roster)
             }
             else
             {
-                // Assuming that gs is a function, MathHelper.no and roster are defined, and tack is an object you have
-                int index = gs(-4);
-                if (index < roster.Count && index != -1)
+                gs = gs(-4);
+                if (gs(MathHelper.no) < roster.Count && !(gs(MathHelper.no) == -1))
                 {
                     tack.Type = "Other";
                     tack.Points = roster;
-
-                    // Function to check whether the roster is closed
-                    bool IsRosterClosed()
+                    tack.IsClosed = ((Func<bool>) (() =>
                     {
                         if (roster[0] == MathHelper.no && roster[^1] == MathHelper.no) return true;
                         if (roster[0] == MathHelper.no || roster[^1] == MathHelper.no) return false;
-
-                        var lastElement = roster[^1] as IDictionary<string, object>;
-                        var firstElement = roster[0] as IDictionary<string, object>;
-
-                        if (lastElement == null || firstElement.Count != lastElement.Count) return false;
-
-                        foreach (var pair in firstElement)
+                        if ((IDictionary<string, dynamic>) roster[^1] != MathHelper.no &&
+                            ((ICollection<KeyValuePair<string, dynamic>>) roster[0]).Count !=
+                            ((IDictionary<string, dynamic>) roster[^1]).Count) return false;
+                        foreach (var pair in (ICollection<KeyValuePair<string, dynamic>>) roster[0])
                         {
-                            if (!lastElement.TryGetValue(pair.Key, out var value) || !Equals(value, pair.Value))
+                            var o = MathHelper.no;
+                            if ((IDictionary<string, dynamic>) roster[^1] != MathHelper.no &&
+                                !((IDictionary<string, dynamic>) roster[^1]).TryGetValue(pair.Key, out o))
                                 return false;
+                            if (!Equals(o, pair.Value)) return false;
                         }
 
                         return true;
-                    }
+                    }))();
+                    tack.IsOpen = !((Func<bool>) (() =>
+                    {
+                        if (roster[0] == MathHelper.no && roster[^1] == MathHelper.no) return true;
+                        if (roster[0] == MathHelper.no || roster[^1] == MathHelper.no) return false;
+                        if ((IDictionary<string, dynamic>) roster[^1] != MathHelper.no &&
+                            ((ICollection<KeyValuePair<string, dynamic>>) roster[0]).Count !=
+                            ((IDictionary<string, dynamic>) roster[^1]).Count) return false;
+                        foreach (var pair1 in (ICollection<KeyValuePair<string, dynamic>>) roster[0])
+                        {
+                            var o1 = MathHelper.no;
+                            if ((IDictionary<string, dynamic>) roster[^1] != MathHelper.no &&
+                                !((IDictionary<string, dynamic>) roster[^1]).TryGetValue(pair1.Key, out o1))
+                                return false;
+                            if (!Equals(o1, pair1.Value)) return false;
+                        }
 
-                    tack.IsClosed = IsRosterClosed();
-
-                    // Function to check whether the roster is open
-                    tack.IsOpen = !IsRosterClosed();
+                        return true;
+                    }))();
 
                     var segments = new List<double>();
+
                     for (var i = 1; i < roster.Count; i++)
                     {
-                        // Assuming roster[i] has properties X and Y
-                        // Assuming roster[i].X and roster[i].Y are of type double
-                        double deltaX = roster[i].X - roster[i - 1].X;
-                        double deltaY = roster[i].Y - roster[i - 1].Y;
-                        var slope = Math.Abs(deltaX) <= 0.0001 ? null : (double?)(deltaY / deltaX);
-                        var segment = new
-                        {
-                            Type = "Line Segment",
-                            P1 = roster[i - 1],
-                            P2 = roster[i],
-                            Length = Math.Sqrt(Math.Pow(roster[i - 1].X - roster[i].X, 2) +
-                                               Math.Pow(roster[i - 1].Y - roster[i].Y, 2)),
-                            Slope = slope
-                        };
-
-                        
-
-                        segments.Add(segment.Length);
+                        dynamic side = new ExpandoObject();
+                        side.Type = "Line Segment";
+                        side.P1 = roster[i - 1];
+                        side.P2 = roster[i];
+                        side.Length = Math.Sqrt(Math.Pow(roster[i - 1].X - roster[i].X, 2) +
+                                                Math.Pow(roster[i - 1].Y - roster[i].Y, 2));
+                        dynamic r = new ExpandoObject();
+                        side.Slope = Math.Abs((double) roster[i].X - roster[i - 1].X) <= 0.0001
+                            ? ((Func<dynamic>) (() =>
+                            {
+                                r.IsSome = false;
+                                return r;
+                            }))()
+                            : ((Func<double, dynamic>) (v =>
+                            {
+                                r.IsSome = true;
+                                r.Value = v;
+                                return r;
+                            }))(((double) roster[i].Y - roster[i - 1].Y) /
+                                ((double) roster[i].X - roster[i - 1].X));
+                        segments.Add(side.Length);
                     }
 
                     tack.Length = segments.Sum();
                 }
-
             }
         }
     }
