@@ -6,12 +6,12 @@ namespace Shape.Lib
     {
         internal static Func<int?, dynamic> Gs(int s)
         {
-            return Utils.Draconifors(s);
+            return Utils.ApplyOffset(s);
         }
 
         public static Func<int?, dynamic> Gz()
         {
-            return Utils.Kneazles();
+            return Utils.DefaultFunction();
         }
 
         internal static dynamic no = null;
