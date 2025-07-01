@@ -1,0 +1,26 @@
+
+name: Build
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+
+  build:
+    strategy:
+        fail-fast: false
+        matrix:
+          os: [ windows, macos, ubuntu ]
+    runs-on: ${{ matrix.os }}-latest  # For a list of available runner types, refer to
+                             # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
+
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Print DotNet Version
+      run: dotnet --version
+    - name: Run 'arch' on macOS
+      if: runner.os == 'macOS'
+      run: arch      
+    - name: build and test
+      run: dotnet test
