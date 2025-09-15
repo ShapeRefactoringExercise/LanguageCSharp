@@ -33,13 +33,17 @@
         },
         {
             "name": "docs",
-            "command": "cls && booklisp ./documentation/_main.md ./readme.md",
-            "description": "sets project state to that of the last committed state"
+            "command": "cls && node ./node_modules/doculisp/dist/index.js ./documentation/_project.dlproj",
+            "description": "builds the documentation"
         },
         {
             "name": "setup",
             "command": "cls;dotnet build;dotnet tool install -g dotnet-reportgenerator-globaltool",
             "description": "sets the project up to be run"
+        },
+        {
+            "name": "push",
+            "command": "cls; git pull && gittey docs && gittey test && gittey commit && git push && git push --tags"
         }
     ],
     "collaborators": []
